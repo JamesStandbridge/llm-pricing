@@ -11,17 +11,15 @@ def calculate_cost(
     price_1k_tokens_input, price_1k_tokens_output = model_prices
     input_cost_daily = (
         ((price_1k_tokens_input / 1000) * avg_tokens_input)
-        * (num_requests_per_month / 30)  # Convert monthly requests to daily average
+        * (num_requests_per_month / 30)
         * num_users
     )
     output_cost_daily = (
         ((price_1k_tokens_output / 1000) * avg_tokens_output)
-        * (num_requests_per_month / 30)  # Convert monthly requests to daily average
+        * (num_requests_per_month / 30)
         * num_users
     )
-    total_monthly_cost = (
-        input_cost_daily + output_cost_daily
-    ) * 30  # Calculate total monthly cost
+    total_monthly_cost = (input_cost_daily + output_cost_daily) * 30
     cost_per_user_per_month = total_monthly_cost / num_users
 
     return (
@@ -32,7 +30,6 @@ def calculate_cost(
     )
 
 
-# Creating the user interface with Streamlit
 st.title("LLM API Cost Analysis")
 
 
@@ -45,7 +42,6 @@ model_prices = {
     "Claude3 Opus": (15 / 1000, 75 / 1000),
 }
 
-# Number inputs for parameters
 avg_tokens_input = st.number_input(
     "Average tokens used in input", min_value=10, max_value=10000, value=500, step=100
 )
@@ -55,9 +51,8 @@ avg_tokens_output = st.number_input(
 num_users = st.slider("Number of users", 100, 20000, 2000)
 num_requests_per_month = st.slider(
     "Number of requests per month per user", 30, 1000, 150
-)  # Adjusted for monthly input
+)
 
-# Calculate costs for all models to compare
 model_comparison_data = []
 for m in model_prices:
     total_cost, _, _, cost_per_user = calculate_cost(
@@ -85,7 +80,7 @@ fig_comparison = px.bar(
     barmode="group",
 )
 st.plotly_chart(fig_comparison)
-# Evolution of cost with number of users for all models
+
 evolution_data = []
 user_range = range(100, 20001, 1900)
 for m in model_prices:
@@ -118,7 +113,6 @@ fig_evolution = px.line(
 st.plotly_chart(fig_evolution)
 
 
-# Model selection
 model = st.selectbox(
     "Select a model",
     (
@@ -128,10 +122,9 @@ model = st.selectbox(
         "Claude3 Haiku",
         "Claude3 Sonnet",
         "Claude3 Opus",
-    ),  # Add other models as needed
+    ),
 )
 
-# Recalculate the total cost for the selected model to ensure it updates when model changes
 total_cost, input_cost, output_cost, cost_per_user_per_month = calculate_cost(
     model_prices[model],
     num_users,
@@ -148,7 +141,6 @@ st.metric(
     value=f"${cost_per_user_per_month:,.2f}".replace(",", " "),
 )
 
-# Cost breakdown pie chart
 cost_data = {
     "Cost Type": ["Input Tokens", "Output Tokens"],
     "Amount": [input_cost, output_cost],
