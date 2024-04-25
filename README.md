@@ -14,19 +14,21 @@ This application, built with Streamlit, offers an in-depth analysis of the costs
 To deploy this application, ensure you have Python and the necessary libraries. Follow these steps:
 
 1. **Python Installation**: Download and install Python from python.org according to your operating system's guidelines.
-2. **Virtual Environment Setup** (recommended):
-   ```bash
-   python -m venv llm-cost-env
-   source llm-cost-env/bin/activate  # For Windows, use `llm-cost-env\Scripts\activate`
-   ```
-3. **Library Installation**:
-   ```bash
-   pip install streamlit pandas plotly numpy
-   ```
+2. **Poetry Installation**: Install Poetry for handling dependencies. Follow the instructions on the Poetry website (https://python-poetry.org/docs/).
+3. **Project Setup and Dependency Management**:
+   - Initialize the project with Poetry if starting from scratch:
+     ```bash
+     poetry new llm-cost-analysis
+     cd llm-cost-analysis
+     ```
+   - To install dependencies with Poetry, add them to your `pyproject.toml` file or use:
+     ```bash
+     poetry add streamlit pandas plotly numpy
+     ```
 
 ## Launching the Tool
 
-With the installation complete, execute the following command in your terminal or command prompt to start the application:
+With the setup complete, execute the following command in your terminal or command prompt to start the application:
 
 ```bash
 streamlit run main.py
