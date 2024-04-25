@@ -1,29 +1,33 @@
-# LLM API Cost Analysis Application
+# Language Model API Cost Analysis Tool
 
-This Streamlit application provides a comprehensive analysis of the costs associated with different Language Model APIs based on various parameters like number of users, requests per month, and tokens used. It includes features like cost comparison across models, cost evolution with user numbers, and detailed breakdowns of input and output costs.
+This application, built with Streamlit, offers an in-depth analysis of the costs involved with various Language Model APIs, considering factors such as user count, monthly requests, and token consumption. It features comparisons of costs between models, the cost dynamics as user numbers fluctuate, and comprehensive breakdowns of costs for input and output tokens.
 
-## Features
+## Key Features
 
-- **Model Cost Comparison**: Compare estimated monthly costs and per-user costs across different models.
-- **Evolution of Cost**: Visualize how costs evolve as the number of users changes.
-- **Detailed Cost Breakdown**: Understand the proportion of costs attributable to input versus output tokens.
-- **Interactive Controls**: Adjust parameters like number of users, requests per month, and token usage to see real-time changes in costs.
+- **Cost Comparison Among Models**: Estimate and compare the monthly and per-user costs for different language models.
+- **Cost Dynamics Visualization**: See how the costs change with variations in user numbers.
+- **In-depth Cost Analysis**: Get insights into the costs related to input and output tokens.
+- **Dynamic User Inputs**: Modify user count, monthly requests, and token consumption to observe cost implications in real time.
 
-## Installation
+## Setup Instructions
 
-To run this application, you'll need Python and several libraries installed. Follow these steps:
+To deploy this application, ensure you have Python and the necessary libraries. Follow these steps:
 
-1. **Install Python**: If you don't already have Python installed, download it from python.org and follow the installation instructions for your operating system.
-2. **Set up a Virtual Environment** (optional but recommended):
+1. **Python Installation**: Download and install Python from python.org according to your operating system's guidelines.
+2. **Virtual Environment Setup** (recommended):
    ```bash
-   python -m venv llm-api-env
-   source llm-api-env/bin/activate  # On Windows use `llm-api-env\Scripts\activate`
+   python -m venv llm-cost-env
+   source llm-cost-env/bin/activate  # For Windows, use `llm-cost-env\Scripts\activate`
    ```
-3. **Install Required Libraries**:
+3. **Library Installation**:
    ```bash
    pip install streamlit pandas plotly numpy
    ```
 
-## Running the Application
+## Launching the Tool
 
-Once you have everything installed, you can run the application using the following command in your terminal or command prompt:
+With the installation complete, execute the following command in your terminal or command prompt to start the application:
+
+```bash
+streamlit run main.py
+```
